@@ -12,6 +12,6 @@ repos:
     hooks:
       - id: cargo-fmt
         name: cargo-fmt
-        entry: just cargo fmt
+        entry: just fmt
         language: system
         pass_filenames: false

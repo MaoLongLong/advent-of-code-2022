@@ -30,3 +30,17 @@ fn main() -> io::Result<()> {
     println!("answer2: {}", m1 + m2 + m3);
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use assert_cmd::Command;
+
+    #[test]
+    fn check_answer() {
+        Command::cargo_bin("day1")
+            .unwrap()
+            .assert()
+            .success()
+            .stdout("answer1: 72602\nanswer2: 207410\n");
+    }
+}
