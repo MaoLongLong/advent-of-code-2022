@@ -34,7 +34,7 @@ fn main() -> io::Result<()> {
         })
         .sum();
 
-    println!("{}", sum);
+    println!("{sum}");
 
     Ok(())
 }

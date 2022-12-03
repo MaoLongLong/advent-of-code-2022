@@ -25,7 +25,7 @@ fn main() -> io::Result<()> {
         }
     }
 
-    println!("{}", sum);
+    println!("{sum}");
 
     Ok(())
 }
