@@ -86,7 +86,7 @@ fn main() -> io::Result<()> {
         total_score += strategy.get_score() + strategy.get_shape(opponent).get_score();
     }
 
-    println!("{}", total_score);
+    println!("{total_score}");
 
     Ok(())
 }

@@ -62,7 +62,7 @@ fn main() -> io::Result<()> {
         total_score += GAME_RESULT.get(&(s1, s2)).unwrap() + s2.score();
     }
 
-    println!("{}", total_score);
+    println!("{total_score}");
 
     Ok(())
 }

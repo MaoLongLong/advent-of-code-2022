@@ -17,3 +17,12 @@ fn check_part2() {
         .success()
         .stdout("2587\n");
 }
+
+#[test]
+fn check_part2_bitmap() {
+    Command::cargo_bin("part2_bitmap")
+        .unwrap()
+        .assert()
+        .success()
+        .stdout("2587\n");
+}

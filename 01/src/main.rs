@@ -26,7 +26,7 @@ fn main() -> io::Result<()> {
     let m3 = heap.pop().unwrap().0;
     let m2 = heap.pop().unwrap().0;
     let m1 = heap.pop().unwrap().0;
-    println!("answer1: {}", m1);
+    println!("answer1: {m1}");
     println!("answer2: {}", m1 + m2 + m3);
     Ok(())
 }
