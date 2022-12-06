@@ -1,7 +1,4 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
+use std::mem;
 
 fn split_pairs(line: &str) -> ((i32, i32), (i32, i32)) {
     let (p1, p2) = line.split_once(',').unwrap();
@@ -13,20 +10,19 @@ fn split_pairs(line: &str) -> ((i32, i32), (i32, i32)) {
     )
 }
 
-fn main() -> io::Result<()> {
-    let f = File::open("./input")?;
-    let reader = BufReader::new(f);
+fn main() {
+    let input = advent_of_code::read_file("inputs", 4);
 
-    let answer = reader
+    let answer = input
         .lines()
-        .map(|line| line.unwrap())
         .filter(|line| {
-            let (p1, p2) = split_pairs(line);
-            p1.0 >= p2.0 && p1.1 <= p2.1 || p2.0 >= p1.0 && p2.1 <= p1.1
+            let (mut p1, mut p2) = split_pairs(line);
+            if p2.0 < p1.0 {
+                mem::swap(&mut p1, &mut p2);
+            }
+            p2.0 <= p1.1
         })
         .count();
 
     println!("{answer}");
-
-    Ok(())
 }

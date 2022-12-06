@@ -1,8 +1,0 @@
-pipeline:
-  check:
-    image: rustlang/rust:nightly
-    commands:
-      - cargo --version
-      - curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /bin
-      - just lint
-      - just test

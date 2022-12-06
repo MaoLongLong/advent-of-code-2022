@@ -1,8 +1,3 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
-
 enum Shape {
     Rock,
     Paper,
@@ -73,13 +68,11 @@ impl From<&str> for Strategy {
     }
 }
 
-fn main() -> io::Result<()> {
-    let f = File::open("./input")?;
-    let reader = BufReader::new(f);
+fn main() {
+    let input = advent_of_code::read_file("inputs", 2);
 
     let mut total_score = 0;
-    for line in reader.lines() {
-        let line = line?;
+    for line in input.lines() {
         let (c1, c2) = line.split_once(' ').unwrap();
         let opponent = Shape::from(c1);
         let strategy = Strategy::from(c2);
@@ -87,6 +80,4 @@ fn main() -> io::Result<()> {
     }
 
     println!("{total_score}");
-
-    Ok(())
 }

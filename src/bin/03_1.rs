@@ -1,16 +1,10 @@
-use std::{
-    collections::HashSet,
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
+use std::collections::HashSet;
 
-fn main() -> io::Result<()> {
-    let f = File::open("./input")?;
-    let reader = BufReader::new(f);
+fn main() {
+    let input = advent_of_code::read_file("inputs", 3);
 
     let mut sum: i32 = 0;
-    for line in reader.lines() {
-        let line = line?;
+    for line in input.lines() {
         let (left, right) = line.split_at(line.len() / 2);
         let set = left.chars().collect::<HashSet<_>>();
         for c in right.chars() {
@@ -26,6 +20,4 @@ fn main() -> io::Result<()> {
     }
 
     println!("{sum}");
-
-    Ok(())
 }

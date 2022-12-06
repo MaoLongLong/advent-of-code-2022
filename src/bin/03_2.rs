@@ -1,19 +1,13 @@
 #![feature(iter_array_chunks)]
 
-use std::{
-    collections::HashSet,
-    fs::File,
-    io::{self, BufRead, BufReader},
-};
+use std::collections::HashSet;
 
-fn main() -> io::Result<()> {
-    let f = File::open("./input")?;
-    let reader = BufReader::new(f);
+fn main() {
+    let input = advent_of_code::read_file("inputs", 3);
 
-    let rucksacks = reader.lines().map(|line| {
-        let line = line.unwrap();
-        line.chars().collect::<HashSet<_>>()
-    });
+    let rucksacks = input
+        .lines()
+        .map(|line| line.chars().collect::<HashSet<_>>());
 
     let sum: i32 = rucksacks
         .array_chunks()
@@ -35,6 +29,4 @@ fn main() -> io::Result<()> {
         .sum();
 
     println!("{sum}");
-
-    Ok(())
 }
